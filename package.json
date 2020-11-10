@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "practicas",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "testcomandd",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubenrgc/libronotedly.git"
+  },
+  "author": "ruben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rubenrgc/libronotedly/issues"
+  },
+  "homepage": "https://github.com/rubenrgc/libronotedly#readme"
+}
