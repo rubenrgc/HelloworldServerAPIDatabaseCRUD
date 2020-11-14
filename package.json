@@ -4,6 +4,7 @@
   "description": "practicas",
   "main": "index.js",
   "dependencies": {
+    "apollo-server-express": "^2.19.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -15,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubenrgc/libronotedly.git"
+    "url": "git+https://github.com/rubenrgc/AppWebNodejsJavascriptHTMLBootstrapMongodb.git"
   },
   "author": "ruben",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rubenrgc/libronotedly/issues"
+    "url": "https://github.com/rubenrgc/AppWebNodejsJavascriptHTMLBootstrapMongodb/issues"
   },
-  "homepage": "https://github.com/rubenrgc/libronotedly#readme"
+  "homepage": "https://github.com/rubenrgc/AppWebNodejsJavascriptHTMLBootstrapMongodb#readme"
 }
