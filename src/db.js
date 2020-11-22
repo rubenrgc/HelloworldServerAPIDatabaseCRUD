@@ -1,7 +1,7 @@
 // Require the mongoose library
 const mongoose = require("mongoose");
-mongoose.set('useFindAndModify', false);
 mongoose.Promise = global.Promise;
+//
 module.exports = {
   connect: (DB_HOST) => {
    
