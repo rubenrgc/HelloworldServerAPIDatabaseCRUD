@@ -1,14 +1,23 @@
 const { gql } = require("apollo-server-express");
+
+
+//agreegamos e scalar DateTime  sta linea para poder hacer uso de datetime
 module.exports = gql`
-  type Note {
+   scalar DateTime    
+
+   type Note {
     id: ID!
     content: String!
     author: String!
-  }
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    }
+
   type Query {
     notes: [Note!]!
     note(id: ID!): Note!
   }
+
   type Mutation {
     newNote(content: String!): Note!
     updateNote(id: ID!, content: String!): Note!

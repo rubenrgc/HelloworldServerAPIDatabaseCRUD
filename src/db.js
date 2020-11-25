@@ -1,6 +1,6 @@
 // Require the mongoose library
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 //
 module.exports = {
   connect: (DB_HOST) => {
@@ -14,7 +14,7 @@ module.exports = {
     // Use the new server discovery and monitoring engine
     mongoose.set("useUnifiedTopology", true);
     // Connect to the DB
-    mongoose.connect(DB_HOST);
+    mongoose.connect (DB_HOST);
     // Log an error if we fail to connect
     mongoose.connection.on("error", (err) => {
       console.error(err);
