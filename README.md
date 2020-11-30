@@ -5,3 +5,17 @@
 
 
 se instalo + graphql-iso-date@3.6.1
+se creo la carpeta ..util/gravatar y se inserto el siguiente codigo 
+/* Take in an email and generate a Gravatar url */
+/* https://gravatar.com/site/implement/ */
+const md5 = require('md5');
+
+const gravatar = email => {
+  const hash = md5(email);
+  return `https://www.gravatar.com/avatar/${hash}.jpg?d=identicon`;
+};
+
+module.exports = gravatar;
+
+se instalo npm install md5
+

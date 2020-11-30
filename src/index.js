@@ -1,7 +1,7 @@
 const express = require("express"); // dependencia de el modulo express server
 const { ApolloServer } = require("apollo-server-express"); //conexion con el modulo server
 require("dotenv").config(); // modulo de dependencia de dotenv para las variables de entorno de la base de datos
-
+const jwt = require("jsonwebtoken");
 // Local Module Imports.
 // Importacion de modulos locales.
 const db = require("./db"); //conexion a nuestra base de datos wque se encuentra en el archivo db.js mongoose
@@ -22,7 +22,18 @@ const app = express();
 
 // Connect to the database
 db.connect(DB_HOST);
-
+// get the user info from a JWT
+const getUser = (token) => {
+  if (token) {
+    try {
+      // return the user information from the token
+      return jwt.verify(token, process.env.JWT_SECRET);
+    } catch (err) {
+      // if there's a problem with the token, throw an error
+      throw new Error("Session invalid");
+    }
+  }
+};
 // let notes = [
 //   { id: "1", content: "This is a note", author: "Adam Scott" },
 //   { id: "2", content: "This is another note", author: "Harlow Everly" },
@@ -77,11 +88,18 @@ db.connect(DB_HOST);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: () => {
-    // Add the db models to the context
-    return { models };
-  },
+  context: ({ req }) => {
+    // get the user token from the headers
+    const token = req.headers.authorization;
+    // try to retrieve a user with the token
+    const user = getUser(token);
+    // for now, let's log the user to the console:
+    console.log(user);
+    // add the db models and the user to the context
+    return { models, user };
+    },
 });
+
 // Apply the Apollo GraphQL middleware and set the path to /api
 server.applyMiddleware({ app, path: "/api" });
 
@@ -90,3 +108,4 @@ app.listen({ port }, () =>
     `GraphQL Server running at http://localhost:${port}${server.graphqlPath}`
   )
 );
+//this app is focus in CRUD Operations . Quinto commit.

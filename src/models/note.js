@@ -5,7 +5,7 @@ const noteSchema = new mongoose.Schema(
 
 
 
-
+// Construct a schema, using GraphQL's schema language
     {
         content: {
         type: String,
