@@ -3,7 +3,6 @@ const { ApolloServer } = require("apollo-server-express"); //conexion con el mod
 require("dotenv").config(); // modulo de dependencia de dotenv para las variables de entorno de la base de datos
 const jwt = require("jsonwebtoken");
 
-
 // Local Module Imports.
 // Importacion de modulos locales.
 const db = require("./db"); //conexion a nuestra base de datos wque se encuentra en el archivo db.js mongoose
@@ -11,12 +10,12 @@ const models = require("./models"); // conexion al modelo de base de datos
 const typeDefs = require("./schema"); // conexion con nuestro archivo Schema que administra el esquema de la bae de datos
 const resolvers = require("./resolvers"); // se agreega esta linea de codig para importar los resolvers que se encuentran en la carpeta resolvers por medio del index.
 // first require the package at the top of the file
-const helmet = require('helmet')
+const helmet = require("helmet");
 // first require the package at the top of the file
-const cors = require('cors');
-
-
-
+const cors = require("cors");
+// import the modules at the top of the file
+const depthLimit = require("graphql-depth-limit");
+const { createComplexityLimitRule } = require("graphql-validation-complexity");
 
 // Run the server on a port specified in our .env file or port 4000
 // Correr nuestro servidor en el puerto 4000.
@@ -100,16 +99,14 @@ const getUser = (token) => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => {
+  validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
+  context: async ({ req }) => {
     // get the user token from the headers
     const token = req.headers.authorization;
-    // try to retrieve a user with the token
-    const user = getUser(token);
-    // for now, let's log the user to the console:
-    console.log(user);
+    // try to retrieve a user with the tokenconst user = await getUser(token);
     // add the db models and the user to the context
     return { models, user };
-    },
+  },
 });
 
 // Apply the Apollo GraphQL middleware and set the path to /api
@@ -120,4 +117,4 @@ app.listen({ port }, () =>
     `GraphQL Server running at http://localhost:${port}${server.graphqlPath}`
   )
 );
-//this app is focus in CRUD Operations . Quinto commit.
+//this app is focus in CRUD Operations .
