@@ -22,17 +22,17 @@ module.exports = gql`
     favorites: [Note!]!
     }
 
-  type Query {
-    notes: [Note!]!
-    note(id: ID!): Note!
-    user(username: String!): User
-    users: [User!]!
-    me: User!
-    author: User!
-    favoritedBy: [User!]
-    noteFeed(cursor: String): NoteFeed
-   
-  }
+    type Query {
+        notes: [Note!]!
+        note(id: ID!): Note!
+        user(username: String!): User
+        users: [User!]!
+        me: User!
+        author: User!
+        favoritedBy: [User!]
+        noteFeed(cursor: String): NoteFeed
+       
+      }
 
   type Mutation {
     newNote(content: String!): Note!
@@ -43,8 +43,14 @@ module.exports = gql`
     toggleFavorite(id: ID!): Note!
   }
   type NoteFeed {
-    notes: [Note]!
-    cursor: String!
-    hasNextPage: Boolean!
-    }
+      notes: [Note]!
+      cursor: String!
+      hasNextPage: Boolean!
+      }
+  
+ 
 `;
+
+
+
+

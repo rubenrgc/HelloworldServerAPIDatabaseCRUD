@@ -3,19 +3,20 @@ const { ApolloServer } = require("apollo-server-express"); //conexion con el mod
 require("dotenv").config(); // modulo de dependencia de dotenv para las variables de entorno de la base de datos
 const jwt = require("jsonwebtoken");
 
+// first require the package at the top of the file
+const helmet = require("helmet");
+// first require the package at the top of the file
+const cors = require("cors");
+
+
 // Local Module Imports.
 // Importacion de modulos locales.
 const db = require("./db"); //conexion a nuestra base de datos wque se encuentra en el archivo db.js mongoose
 const models = require("./models"); // conexion al modelo de base de datos
 const typeDefs = require("./schema"); // conexion con nuestro archivo Schema que administra el esquema de la bae de datos
 const resolvers = require("./resolvers"); // se agreega esta linea de codig para importar los resolvers que se encuentran en la carpeta resolvers por medio del index.
-// first require the package at the top of the file
-const helmet = require("helmet");
-// first require the package at the top of the file
-const cors = require("cors");
-// import the modules at the top of the file
-const depthLimit = require("graphql-depth-limit");
-const { createComplexityLimitRule } = require("graphql-validation-complexity");
+
+
 
 // Run the server on a port specified in our .env file or port 4000
 // Correr nuestro servidor en el puerto 4000.
@@ -23,8 +24,11 @@ const port = process.env.PORT || 4000;
 
 // Store the DB_HOST value as a variable.
 // Almacenamos el valor del host de la base de datos.
-const DB_HOST = process.env.DB_HOST;
+const DB_HOST = process.env.DB_HOST ;
+// import the modules at the top of the file
 
+//const depthLimit = require("graphql-depth-limit");
+//const { createComplexityLimitRule } = require("graphql-validation-complexity");
 // Variable para el metodo express del server
 const app = express();
 // add the middleware at the top of the stack, after const app = express()
