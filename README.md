@@ -270,7 +270,7 @@ que al momento de ejecutar este mismo codigo se volvera a poner en cero el conta
 --------------------------Nested Queries-------------------------
 --------------------------Consultas Anidadas---------------------
 
-
+esto puede ser sin que este iniciada la sesion
 query {
 note(id: "606aa7511210603eb81f8001") {
 id
@@ -344,3 +344,11 @@ heroku/7.49.0 linux-x64 node-v12.16.2
 iniciamos sesion en heroku terminal con el sigueinte comando
 
  heroku login
+
+
+
+
+ curl \> -X POST \
+> -H "Content-Type: application/json" \
+> --data '{ "query": "{ notes { id }}"}' \
+> https://javascript-enywhere-master.herokuapp.com/api
