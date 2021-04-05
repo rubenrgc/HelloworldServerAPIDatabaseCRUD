@@ -252,7 +252,7 @@ despues de hacer nuestra nota se pone el contador en cero para el like
 una vez que se hace la siguiente mutacion debera agreegarse el id de la nota que estara ligada con el usuario con su respectiva sesion 
 
 mutation {
-toggleFavorite(id: "5fd8499d14351c2f474adde0") {
+toggleFavorite(id: "606aa7511210603eb81f8001") {
 favoriteCount
 }
 }
@@ -272,7 +272,7 @@ que al momento de ejecutar este mismo codigo se volvera a poner en cero el conta
 
 
 query {
-note(id: "5fd8499d14351c2f474adde0") {
+note(id: "606aa7511210603eb81f8001") {
 id
 content
 # the information about the author note
@@ -301,10 +301,46 @@ Esta es una consulta anidada que se hizo aplicando el id de la nota y nos devuel
 tambien lo podemos consultar por id favorito
 
 mutation {
-toggleFavorite(id: "5fd8499d14351c2f474adde0") {
+toggleFavorite(id: "606aa7511210603eb81f8001") {
 favoriteCount
 favoritedBy {
 username
 }
 }
 }
+
+
+------------------push para github-------------------------
+
+primero hacer link de la aplicacion hacia github
+git  add .
+
+
+para hacerle saber quien somos a github
+git config --global user.email "email"
+git config --global user.user "usuario"
+
+para hacer el commit
+git commit -m "mensaje que quieras poner"
+
+para hacer elpush
+git push
+
+y revisar en github que este el proyecto
+
+
+
+--------------------Instalacion de heroku ----------------------
+
+sudo snap install --classic heroku
+ 
+ se revisa si esta instalado correctamente
+ con el comando heroku --version
+ arroja lo siguiente
+ ›   Warning: Our terms of service have changed: 
+ ›   https://dashboard.heroku.com/terms-of-service
+heroku/7.49.0 linux-x64 node-v12.16.2
+
+iniciamos sesion en heroku terminal con el sigueinte comando
+
+ heroku login
