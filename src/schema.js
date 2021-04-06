@@ -20,7 +20,7 @@ module.exports = gql`
     avatar: String
     notes: [Note!]!
     favorites: [Note!]!
-    }
+  }
 
   type Query {
     notes: [Note!]!
@@ -30,7 +30,7 @@ module.exports = gql`
     me: User!
     author: User!
     favoritedBy: [User!]
-   
+    noteFeed(cursor: String): NoteFeed
   }
 
   type Mutation {
@@ -40,5 +40,10 @@ module.exports = gql`
     signUp(username: String!, email: String!, password: String!): String!
     signIn(username: String, email: String, password: String!): String!
     toggleFavorite(id: ID!): Note!
+  }
+  type NoteFeed {
+    notes: [Note]!
+    cursor: String!
+    hasNextPage: Boolean!
   }
 `;

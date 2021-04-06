@@ -352,3 +352,5 @@ iniciamos sesion en heroku terminal con el sigueinte comando
 > -H "Content-Type: application/json" \
 > --data '{ "query": "{ notes { id }}"}' \
 > https://javascript-enywhere-master.herokuapp.com/api
+
+{"data":{"notes":[{"id":"606aa3b51210603eb81f7ff9"},{"id":"606aa3c21210603eb81f7ffa"},{"id":"606aa3c51210603eb81f7ffb"},{"id":"606aa3c81210603eb81f7ffc"},{"id":"606aa6501210603eb81f7ffd"},{"id":"606aa6601210603eb81f7ffe"},{"id":"606aa71d1210603eb81f7fff"},{"id":"606aa7221210603eb81f8000"},{"id":"606aa7511210603eb81f8001"}]}}

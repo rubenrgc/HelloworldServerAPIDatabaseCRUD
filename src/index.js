@@ -1,7 +1,16 @@
 const express = require("express"); // dependencia de el modulo express server
+// first require the package at the top of the file
+const helmet = require("helmet");
+// first require the package at the top of the file
+const cors = require("cors");
+// import the modules at the top of the file
+const depthLimit = require("graphql-depth-limit");
+const { createComplexityLimitRule } = require("graphql-validation-complexity");
+
 const { ApolloServer } = require("apollo-server-express"); //conexion con el modulo server
 require("dotenv").config(); // modulo de dependencia de dotenv para las variables de entorno de la base de datos
 const jwt = require("jsonwebtoken");
+
 // Local Module Imports.
 // Importacion de modulos locales.
 const db = require("./db"); //conexion a nuestra base de datos wque se encuentra en el archivo db.js mongoose
@@ -19,7 +28,10 @@ const DB_HOST = process.env.DB_HOST;
 
 // Variable para el metodo express del server
 const app = express();
-
+// add the middleware at the top of the stack, after const app = express()
+app.use(helmet());
+// add the middleware after app.use(helmet());
+app.use(cors());
 // Connect to the database
 db.connect(DB_HOST);
 // get the user info from a JWT
@@ -85,19 +97,18 @@ const getUser = (token) => {
 // Apollo Server setup
 //(codigo anterior)const server = new ApolloServer({ typeDefs, resolvers });
 // Apollo Server setup (sustitucion)
+// update our ApolloServer code to include validationRules
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => {
+  validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
+  context: async ({ req }) => {
     // get the user token from the headers
     const token = req.headers.authorization;
-    // try to retrieve a user with the token
-    const user = getUser(token);
-    // for now, let's log the user to the console:
-    console.log(user);
+    const user = await getUser(token);
     // add the db models and the user to the context
     return { models, user };
-    },
+  },
 });
 
 // Apply the Apollo GraphQL middleware and set the path to /api
