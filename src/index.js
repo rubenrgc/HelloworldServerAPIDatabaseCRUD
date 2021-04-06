@@ -1,15 +1,14 @@
 const express = require("express"); // dependencia de el modulo express server
+const { ApolloServer } = require("apollo-server-express"); //conexion con el modulo server
+const jwt = require("jsonwebtoken");
 // first require the package at the top of the file
-const helmet = require("helmet");
+//const helmet = require("helmet");
 // first require the package at the top of the file
-const cors = require("cors");
+//const cors = require("cors");
 // import the modules at the top of the file
 const depthLimit = require("graphql-depth-limit");
 const { createComplexityLimitRule } = require("graphql-validation-complexity");
-
-const { ApolloServer } = require("apollo-server-express"); //conexion con el modulo server
 require("dotenv").config(); // modulo de dependencia de dotenv para las variables de entorno de la base de datos
-const jwt = require("jsonwebtoken");
 
 // Local Module Imports.
 // Importacion de modulos locales.
@@ -28,12 +27,13 @@ const DB_HOST = process.env.DB_HOST;
 
 // Variable para el metodo express del server
 const app = express();
-// add the middleware at the top of the stack, after const app = express()
-app.use(helmet());
-// add the middleware after app.use(helmet());
-app.use(cors());
 // Connect to the database
 db.connect(DB_HOST);
+// add the middleware at the top of the stack, after const app = express()
+//app.use(helmet());
+// add the middleware after app.use(helmet());
+//app.use(cors());
+
 // get the user info from a JWT
 const getUser = (token) => {
   if (token) {

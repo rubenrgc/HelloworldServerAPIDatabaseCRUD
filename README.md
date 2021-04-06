@@ -76,7 +76,7 @@ query {
   id
   }
 }
-
+"606aa3b51210603eb81f7ff9"
 
 ----------------- Creacion de notas ------------------------------
 se agreega el token a http headers
@@ -256,6 +256,10 @@ toggleFavorite(id: "606aa7511210603eb81f8001") {
 favoriteCount
 }
 }
+aplicamos el http header para autenticarnos
+{
+"Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmFhMzZiMTIxMDYwM2ViODFmN2ZmNyIsImlhdCI6MTYxNzY3MTQzNX0.zL49Sz1QR14QZKDlHWHC-PEfTYHJv-H2mxEvNiR7FZU"
+} 
 despues de esto el contador se pondra en uno para hacernos saber que ya esta marcada como nota favorita o como que ya dimos un like 
 que al momento de ejecutar este mismo codigo se volvera a poner en cero el contador
 {
@@ -308,6 +312,12 @@ username
 }
 }
 }
+-----------------------------------------------------------------
+instalacion de helmet
+
+
+
+
 
 
 ------------------push para github-------------------------
@@ -348,9 +358,10 @@ iniciamos sesion en heroku terminal con el sigueinte comando
 
 
 
- curl \> -X POST \
-> -H "Content-Type: application/json" \
-> --data '{ "query": "{ notes { id }}"}' \
-> https://javascript-enywhere-master.herokuapp.com/api
+ curl \
+  -X POST \
+-H "Content-Type: application/json" \
+ --data '{ "query": "{ notes { id }}"}' \
+ https://javascript-enywhere-master.herokuapp.com/api
 
 {"data":{"notes":[{"id":"606aa3b51210603eb81f7ff9"},{"id":"606aa3c21210603eb81f7ffa"},{"id":"606aa3c51210603eb81f7ffb"},{"id":"606aa3c81210603eb81f7ffc"},{"id":"606aa6501210603eb81f7ffd"},{"id":"606aa6601210603eb81f7ffe"},{"id":"606aa71d1210603eb81f7fff"},{"id":"606aa7221210603eb81f8000"},{"id":"606aa7511210603eb81f8001"}]}}

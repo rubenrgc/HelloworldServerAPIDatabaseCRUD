@@ -6,6 +6,7 @@
   "dependencies": {
     "apollo-server-express": "^2.19.0",
     "bcrypt": "^5.0.0",
+    "dependencies": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.4.0",
@@ -20,7 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mongodb": "^3.6.3",
-    "mongoose": "^5.10.15",
+    "mongoose": "^5.12.3",
+    "peer": "^0.6.1",
     "prettier": "^2.2.0"
   },
   "devDependencies": {
