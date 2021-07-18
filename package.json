@@ -4,29 +4,30 @@
   "description": "practicas",
   "main": "index.js",
   "dependencies": {
-    "apollo-server-express": "^2.19.0",
-    "bcrypt": "^5.0.0",
+    "apollo-server-express": "^2.24.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dependencies": "0.0.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "graphql": "^15.4.0",
+    "graphql": "^15.5.0",
     "graphql-depth-limit": "^1.1.0",
     "graphql-iso-date": "^3.6.1",
-    "graphql-subscriptions": "^1.1.0",
+    "graphql-subscriptions": "^1.2.1",
     "graphql-upload": "^8.1.0",
     "graphql-validation-complexity": "^0.4.2",
     "gravatar": "^1.8.1",
     "gravatar-utils": "^1.1.1",
-    "helmet": "^4.4.1",
+    "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
-    "mongodb": "^3.6.3",
-    "mongoose": "^5.12.3",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.8",
     "peer": "^0.6.1",
-    "prettier": "^2.2.0"
+    "prettier": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.7"
   },
   "scripts": {
     "test": "testcomandd",
