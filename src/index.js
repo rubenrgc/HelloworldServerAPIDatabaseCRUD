@@ -2,9 +2,9 @@ const express = require("express"); // dependencia de el modulo express server
 const { ApolloServer } = require("apollo-server-express"); //conexion con el modulo server
 const jwt = require("jsonwebtoken");
 // first require the package at the top of the file
-const helmet = require("helmet");
+//const helmet = require("helmet");
 // first require the package at the top of the file
-const cors = require("cors");
+//const cors = require("cors");
 // import the modules at the top of the file
 const depthLimit = require("graphql-depth-limit");
 const { createComplexityLimitRule } = require("graphql-validation-complexity");
@@ -30,9 +30,9 @@ const app = express();
 // Connect to the database
 db.connect(DB_HOST);
 // add the middleware at the top of the stack, after const app = express()
-app.use(helmet());
+//app.use(helmet());
 // add the middleware after app.use(helmet());
-app.use(cors());
+//app.use(cors());
 
 // get the user info from a JWT
 const getUser = (token) => {
