@@ -31,7 +31,7 @@ const app = express();
 db.connect(DB_HOST);
 // add the middleware at the top of the stack, after const app = express()
 app.use(helmet());
-// add the middleware after app.use(helmet());
+// add the middleware after app.use(helmet());ss
 app.use(cors());
 
 // get the user info from a JWT
